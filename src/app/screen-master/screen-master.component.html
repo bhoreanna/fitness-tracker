@@ -1,0 +1,127 @@
+
+<!-- 
+<div *ngIf="moduleMasterList.length>0">
+        <mat-form-field>
+            <mat-select placeholder="Select  moduleMaster" [(ngModel)]="screenMaster.tempModuleId" name="tempModuleId" #TempModuleId="ngModel">
+                <mat-option *ngFor="let moduleMaster of moduleMasterList" [value]="moduleMaster.moduleId">
+                    {{moduleMaster.moduleId }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div> -->
+
+
+    <div class="row">
+
+        <div class="col-8">
+                <section class="screen-form">
+                        <!-- <div style="align-content: center ;padding-left: 550px"> -->
+                                <div >
+
+                            <h1>SCREEN ADDING FORM</h1>
+            
+                            <div *ngIf="moduleMasterList.length>0">
+                                    <mat-form-field>
+                                        <mat-select placeholder="Select  moduleMaster" [(ngModel)]="screenMaster.moduleMaster" name="moduleMaster" #ModuleMaster="ngModel">
+                                            <mat-option *ngFor="let moduleMaster of moduleMasterList" [value]="moduleMaster">
+                                                {{moduleMaster.moduleId }}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+            
+                        
+            
+            
+                        <div *ngIf="screenMaster.moduleMaster!=null">
+                            <!-- {{screenMaster.moduleMaster|json}} -->
+                        
+                         <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" #f=ngForm (ngSubmit)="onSubmit(f)">
+                            <mat-form-field>
+                                <input type="text" 
+                                matInput placeholder="screenId" 
+                                ngModel name="screenId"
+                                required
+                                [(ngModel)]="screenMaster.screenId"
+                                #screenIdInput="ngModel">
+                                <mat-error *ngIf="screenIdInput.hasError('required')">Field Must Not Be Empty</mat-error>
+                    
+                            </mat-form-field>
+                    
+                    
+                            <mat-form-field>
+                                <input type="text" 
+                                matInput placeholder="screenName" 
+                                ngModel name="screenName"
+                                required
+                                [(ngModel)]="screenMaster.screenName"
+                                #screenNameInput="ngModel">
+                                <mat-error *ngIf="screenNameInput.hasError('required')">Field Must Not Be Empty</mat-error>
+                    
+                            </mat-form-field>
+                    
+                    
+                            <mat-form-field>
+                                <input type="text" 
+                                matInput placeholder="CreatedBy" 
+                                ngModel name="createdBy"
+                                required
+                                [(ngModel)]="screenMaster.createdBy"
+                                #createdByInput="ngModel">
+                                <mat-error *ngIf="createdByInput.hasError('required')">Field Must Not Be Empty</mat-error>
+                    
+                            </mat-form-field>
+                    
+                            
+                            <mat-form-field>
+                                <input matInput
+                                [matDatepicker]="picker" 
+                                placeholder="Created Date"
+                                ngModel 
+                                name="createdDate"
+                                [(ngModel)]="screenMaster.createdDate"
+                    
+                                required
+                                >
+            
+                                
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle> 
+                                 <mat-datepicker #picker></mat-datepicker> 
+                              </mat-form-field>
+                    
+                    
+                    
+                              <mat-form-field>
+                                    <mat-label>MODULE STATUS</mat-label>
+                                    <select matNativeControl required
+                                    
+                                    ngModel name="screenStatus"
+                                    required
+                                    [(ngModel)]="screenMaster.screenStatus"
+                                    #screenStatusInput="ngModel">
+                                    <mat-error *ngIf="screenStatusInput.hasError('required')">Field Must Not Be Empty</mat-error>
+                                    >
+                                      <option value="active">ACTIVE</option>
+                                      <option value="inActive">INACTIVE</option>
+                                      
+                                    </select>
+                                  </mat-form-field>
+                    
+                            <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">SUBMIT</button>
+                    
+                        </form> 
+                    </div>
+                    </div>
+                    </section>
+                        </div>
+
+        <div class="col-4">
+                <app-tree-flat-overview-example></app-tree-flat-overview-example>
+        </div>
+
+    </div>
+
+    
+        
+
+

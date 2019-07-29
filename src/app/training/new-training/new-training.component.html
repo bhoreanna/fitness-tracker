@@ -1,0 +1,18 @@
+<section class="new-traning" fxLayoutAlign="center">
+    <mat-card fxFlex.xs="100%" fxFlex="400px">
+        <mat-card-title fxLayoutAlign="center" >TIME TO START WORKOUT</mat-card-title>
+        <mat-card-content  fxLayoutAlign="center">
+            <mat-form-field>
+                    <mat-label >Select Excecies</mat-label>
+                    <mat-select>
+                      <mat-option  *ngFor="let Excecies of Excecieses" [value]="Excecies.value">
+                        {{Excecies.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions fxLayoutAlign="center">
+            <button  type="submit" (click)="onStartTraning()" mat-button>START</button>
+        </mat-card-actions>
+    </mat-card>
+</section>

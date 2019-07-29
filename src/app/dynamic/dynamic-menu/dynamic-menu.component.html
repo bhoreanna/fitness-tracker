@@ -1,0 +1,46 @@
+
+
+ <!-- <div class="basic-container" *ngIf="moduleMasterList.length>0" >
+ 
+   <mat-toolbar class="menu-bar mat-elevation-z1 " > 
+    <span *ngFor="let moduleMaster of moduleMasterList">
+      <span *ngIf="moduleMaster.screenMasterList && moduleMaster.screenMasterList.length >= 0">
+        <button mat-button [matMenuTriggerFor]="menu.childMenu">
+          {{moduleMaster.moduleName}}
+        </button>
+         <app-menu-item #menu [screenMasters]="moduleMaster.screenMasterList"></app-menu-item>  
+
+      </span>
+   
+    </span>
+  </mat-toolbar>
+</div>  -->
+
+
+
+
+<div class="basic-container" >
+  <!-- <mat-toolbar color="primary">
+    TopNav Menu Navigation Example
+  </mat-toolbar> -->
+
+   <mat-toolbar class="menu-bar mat-elevation-z1 " > 
+      <!-- <mat-toolbar class="topbar telative mat-toolbar mat-primary mat-toolbar-single-row" color="primary"  ng-reflect-color="primary" style="flex-direction: row; box-sizing: border-box; display: flex;position: fixed;" [class.mat-elevation-z24]="isActive"> -->
+    <span *ngFor="let moduleMaster of moduleMasterList">
+      <span *ngIf="moduleMaster.screenMasterList && moduleMaster.screenMasterList.length >= 0">
+        <button mat-button [matMenuTriggerFor]="menu.childMenu">
+          {{moduleMaster.moduleName}}
+        </button>
+          <app-menu-item #menu [screenMasters]="moduleMaster.screenMasterList"></app-menu-item>   
+
+      </span>
+       <!-- <span *ngIf="!screenModule.screenMasterList || screenModule.screenMasterList.length === 0">
+        <button mat-button color="primary" [routerLink]="screenModule.moduleUid">
+          {{screenModule.moduleName}}
+        </button>
+      </span>  -->
+    </span>
+  </mat-toolbar>
+  <!-- <router-outlet></router-outlet> -->
+</div>
+<!-- <span class="version-info">Current build: {{version.full ? version.full : version}}</span> -->

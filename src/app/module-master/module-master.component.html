@@ -1,0 +1,84 @@
+
+
+<section class="module-form">
+    <div style="align-content: center ;padding-left: 550px">
+        <h1>MODULE ADDING FORM</h1>
+    </div>
+    <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" #f=ngForm (ngSubmit)="onSubmit(f)">
+        <mat-form-field>
+            <input type="text" 
+            matInput placeholder="ModuleId" 
+            ngModel name="moduleId"
+            required
+            [(ngModel)]="moduleMaster.moduleId"
+            #moduleIdInput="ngModel">
+            <mat-error *ngIf="moduleIdInput.hasError('required')">Field Must Not Be Empty</mat-error>
+
+        </mat-form-field>
+
+
+        <mat-form-field>
+            <input type="text" 
+            matInput placeholder="ModuleName" 
+            ngModel name="moduleName"
+            required
+            [(ngModel)]="moduleMaster.moduleName"
+            #moduleNameInput="ngModel">
+            <mat-error *ngIf="moduleNameInput.hasError('required')">Field Must Not Be Empty</mat-error>
+
+        </mat-form-field>
+
+
+        <mat-form-field>
+            <input type="text" 
+            matInput placeholder="CreatedBy" 
+            ngModel name="createdBy"
+            required
+            [(ngModel)]="moduleMaster.createdBy"
+            #createdByInput="ngModel">
+            <mat-error *ngIf="createdByInput.hasError('required')">Field Must Not Be Empty</mat-error>
+
+        </mat-form-field>
+
+        
+        <mat-form-field>
+            <input matInput
+            [matDatepicker]="picker" 
+            placeholder="Created Date"
+            ngModel 
+            name="createdDate"
+            [(ngModel)]="moduleMaster.createdDate"
+
+            required
+            >
+        
+
+
+
+            
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle> 
+             <mat-datepicker #picker></mat-datepicker> 
+          </mat-form-field>
+
+
+
+          <mat-form-field>
+                <mat-label>MODULE STATUS</mat-label>
+                <select matNativeControl required
+                
+                ngModel name="moduleStatus"
+                required
+                [(ngModel)]="moduleMaster.moduleStatus"
+                #moduleStatusInput="ngModel">
+                <mat-error *ngIf="moduleStatusInput.hasError('required')">Field Must Not Be Empty</mat-error>
+                >
+                  <option value="active">ACTIVE</option>
+                  <option value="inActive">INACTIVE</option>
+                  
+                </select>
+              </mat-form-field>
+
+        <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">SUBMIT</button>
+
+    </form>
+</section>

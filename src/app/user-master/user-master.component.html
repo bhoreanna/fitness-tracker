@@ -1,0 +1,230 @@
+<div class="row">
+    <div class="col">
+        <button class="btn btn-primary" (click)="addForm()">Add</button>
+
+        <div *ngIf="hideShowAddFlag">
+
+            <section class="screen-form">
+                <div style="align-content: center ;padding-left: 550px">
+                    <h1>NEW USER </h1>
+
+                    <div>
+
+                        <!-- <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" #f=ngForm (ngSubmit)="onSubmit(f)"> -->
+                        <form fxLayout="column" fxLayoutGap="10px" #f=ngForm (ngSubmit)="onSubmit(f)">
+
+                            <mat-form-field>
+                                <input type="text" matInput placeholder="userId" ngModel name="userId" required
+                                    [(ngModel)]="userMaster.userId" #userIdInput="ngModel">
+                                <mat-error *ngIf="userIdInput.hasError('required')">Field Must Not Be Empty</mat-error>
+
+                            </mat-form-field>
+
+
+                            <mat-form-field>
+                                <input type="text" matInput placeholder="userName" ngModel name="userName" required
+                                    [(ngModel)]="userMaster.userName" #userNameInput="ngModel">
+                                <mat-error *ngIf="userNameInput.hasError('required')">Field Must Not Be Empty
+                                </mat-error>
+
+                            </mat-form-field>
+
+
+
+                            <mat-form-field>
+                                <input type="password" matInput placeholder="password" ngModel name="password" required
+                                    [(ngModel)]="userMaster.password" #passwordInput="ngModel">
+                                <mat-error *ngIf="passwordInput.hasError('required')">Field Must Not Be Empty
+                                </mat-error>
+
+                            </mat-form-field>
+
+
+                          
+
+
+                           
+
+
+                            <mat-form-field>
+                                <input type="email" matInput placeholder="email" ngModel name="email" required
+                                    [(ngModel)]="userMaster.email" #emailInput="ngModel">
+                                <mat-error *ngIf="emailInput.hasError('required')">Field Must Not Be Empty</mat-error>
+
+                            </mat-form-field>
+
+
+
+
+                            <mat-form-field>
+                                <input type="text" matInput placeholder="CreatedBy" ngModel name="createdBy" required
+                                    [(ngModel)]="userMaster.createdBy" #createdByInput="ngModel">
+                                <mat-error *ngIf="createdByInput.hasError('required')">Field Must Not Be Empty
+                                </mat-error>
+
+                            </mat-form-field>
+
+
+                            <mat-form-field>
+                                <input matInput [matDatepicker]="picker" placeholder="Created Date" ngModel
+                                    name="createdDate" [(ngModel)]="userMaster.createdDate" required>
+
+
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+
+
+
+                            <mat-form-field>
+                                <mat-label>USER STATUS</mat-label>
+                                <select matNativeControl required ngModel name="userStatus" required
+                                    [(ngModel)]="userMaster.userStatus" #userStatusInput="ngModel">
+                                    <mat-error *ngIf="userStatusInput.hasError('required')">Field Must Not Be Empty
+                                    </mat-error>
+                                    >
+                                    <option value="active">ACTIVE</option>
+                                    <option value="inActive">INACTIVE</option>
+
+                                </select>
+                            </mat-form-field>
+
+                            {{roleMasterList.length}}
+                            <div *ngIf="roleMasterList.length>0">
+                                <mat-form-field>
+                                    <mat-select placeholder="Select  ROLE" [(ngModel)]="userMaster.roleMaster"
+                                        name="roleMaster" #RoleMaster="ngModel">
+                                        <mat-option *ngFor="let roleMaster of roleMasterList" [value]="roleMaster">
+                                            {{roleMaster.roleId }}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+
+                            <button type="submit" mat-raised-button color="primary"
+                                [disabled]="f.invalid">SUBMIT</button>
+
+                        </form>
+
+
+
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div class="col">
+        <button class="btn btn-primary" (click)=" updateForm()">Update</button>
+        <div *ngIf="hideShowUpdateFlag">
+            <h1>UPDATE USER</h1>
+            <form #uf=ngForm (ngSubmit)="searchUserMaster()">
+                <mat-form-field>
+                    <input type="text" matInput placeholder="Please Enter UserId" ngModel name="userId" required
+                        [(ngModel)]="userMasterSearchObj.userId" #userIdInput="ngModel">
+                    <mat-error *ngIf="userIdInput.hasError('required')">Field Must Not Be Empty</mat-error>
+
+                </mat-form-field>
+
+                <button type="submit" mat-raised-button color="primary" [disabled]="uf.invalid">SEARCH</button>
+
+
+            </form>
+
+
+<div *ngIf="userMasterSearchObj.userUid">
+            <section class="screen-form">
+
+                <!-- <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" #f=ngForm (ngSubmit)="onSubmit(f)"> -->
+                <form fxLayout="column" fxLayoutGap="10px" #uuf=ngForm (ngSubmit)="updateUserMaster()">
+
+                    <mat-form-field>
+                        <input type="text" matInput placeholder="userId" ngModel name="userId" required
+                            [(ngModel)]="userMasterSearchObj.userId" #userIdInput="ngModel">
+                        <mat-error *ngIf="userIdInput.hasError('required')">Field Must Not Be Empty</mat-error>
+
+                    </mat-form-field>
+
+
+                    <mat-form-field>
+                        <input type="text" matInput placeholder="userName" ngModel name="userName" required
+                            [(ngModel)]="userMasterSearchObj.userName" #userNameInput="ngModel">
+                        <mat-error *ngIf="userNameInput.hasError('required')">Field Must Not Be Empty</mat-error>
+
+                    </mat-form-field>
+
+
+
+                    <mat-form-field>
+                        <input type="password" matInput placeholder="password" ngModel name="password" required
+                            [(ngModel)]="userMasterSearchObj.password" #passwordInput="ngModel">
+                        <mat-error *ngIf="passwordInput.hasError('required')">Field Must Not Be Empty</mat-error>
+
+                    </mat-form-field>
+
+
+
+                    <mat-form-field>
+                        <input type="email" matInput placeholder="email" ngModel name="email" required
+                            [(ngModel)]="userMasterSearchObj.email" #emailInput="ngModel">
+                        <mat-error *ngIf="emailInput.hasError('required')">Field Must Not Be Empty</mat-error>
+
+                    </mat-form-field>
+
+
+
+
+                    <mat-form-field>
+                        <input type="text" matInput placeholder="CreatedBy" ngModel name="createdBy" required
+                            [(ngModel)]="userMasterSearchObj.createdBy" #createdByInput="ngModel">
+                        <mat-error *ngIf="createdByInput.hasError('required')">Field Must Not Be Empty</mat-error>
+
+                    </mat-form-field>
+
+
+                    <mat-form-field>
+                        <input matInput [matDatepicker]="picker" placeholder="Created Date" ngModel name="createdDate"
+                            [(ngModel)]="userMasterSearchObj.createdDate" required>
+
+
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+
+
+
+                    <mat-form-field>
+                        <mat-label>USER STATUS</mat-label>
+                        <select matNativeControl required ngModel name="userStatus" required
+                            [(ngModel)]="userMasterSearchObj.userStatus" #userStatusInput="ngModel">
+                            <mat-error *ngIf="userStatusInput.hasError('required')">Field Must Not Be Empty</mat-error>
+                            >
+                            <option value="active">ACTIVE</option>
+                            <option value="inActive">INACTIVE</option>
+
+                        </select>
+                    </mat-form-field>
+
+                    <div *ngIf="roleMasterList.length>0">
+                        <mat-form-field>
+                            <mat-select placeholder="Select  ROLE" [(ngModel)]="userMasterSearchObj.roleMaster"
+                                name="roleMaster" #RoleMaster="ngModel">
+                                <mat-option *ngFor="let roleMaster of roleMasterList" [value]="roleMaster">
+                                    {{roleMaster.roleId }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <button type="submit" mat-raised-button color="primary" [disabled]="uuf.invalid">UPDATE</button>
+
+                </form>
+
+
+    </section>
+
+</div>
+
+</div>
+</div>
+</div>

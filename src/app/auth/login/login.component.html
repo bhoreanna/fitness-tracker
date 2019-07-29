@@ -1,0 +1,22 @@
+<section class="signup-form" style="margin-top: 300px">
+        <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" #f=ngForm (ngSubmit)="onSubmit(f)">
+            <mat-form-field>
+
+                <input type="text" matInput placeholder="userName" ngModel name="userName" required
+                    [(ngModel)]="userMaster.userName" #userNameInput="ngModel">
+                <mat-error *ngIf="userNameInput.hasError('required')">Field Must Not Be Empty</mat-error>
+
+            </mat-form-field>
+    
+            <mat-form-field>
+                <input type="password" matInput placeholder="password" ngModel name="password" required
+                    [(ngModel)]="userMaster.password" #passwordInput="ngModel">
+                <mat-error *ngIf="passwordInput.hasError('required')">Field Must Not Be Empty</mat-error>
+
+            </mat-form-field>
+
+    
+            <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">SUBMIT</button>
+    
+        </form>
+    </section>

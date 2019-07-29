@@ -1,0 +1,13 @@
+
+
+ <mat-menu #childMenu="matMenu" [overlapTrigger]="false">
+  <span *ngFor="let screenMaster of screenMasters">
+    
+    <span >
+      <button mat-menu-item [routerLink]="screenMaster.screenName">
+        <span>{{screenMaster.screenId}}</span>
+      </button>
+    </span> 
+  </span>
+</mat-menu>  
+
