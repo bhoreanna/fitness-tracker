@@ -14,44 +14,41 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   {
-    path:"",component:LoginComponent
+    path:'',component:LoginComponent
   },
   {
-    path:"home",component:HomeComponent ,  canActivate: [AuthGuardService],
+    path:'home',component:HomeComponent , canActivate: [AuthGuardService],
     children: [
     
       {
-        path:"module-master",component:ModuleMasterComponent ,  canActivate: [AuthGuardService]
+        path:'module-master',component:ModuleMasterComponent ,  canActivate: [AuthGuardService]
       },
       {
-        path:"screen-master",component:ScreenMasterComponent ,  canActivate: [AuthGuardService]
+        path:'screen-master',component:ScreenMasterComponent ,  canActivate: [AuthGuardService]
       },
       {
-        path:"role-master",component:RoleMasterComponent ,  canActivate: [AuthGuardService]
+        path:'role-master',component:RoleMasterComponent ,  canActivate: [AuthGuardService]
       },
       {
-        path:"user-master",component:UserMasterComponent ,  canActivate: [AuthGuardService]
+        path:'user-master',component:UserMasterComponent ,  canActivate: [AuthGuardService]
       },
     
       {
-        path:"admin-dashboard",component:AdminDashboardComponent  ,  canActivate: [AuthGuardService]
+        path:'admin-dashboard',component:AdminDashboardComponent  ,  canActivate: [AuthGuardService]
       },
 
       {
-        path:"dashboard",component:DashboardComponent  ,  canActivate: [AuthGuardService]
-      }
-
-
-      
-    
-    
-  
+        path:'dashboard',component:DashboardComponent  ,  canActivate: [AuthGuardService]
+      },
     ]},
 
-     { path: '**', redirectTo: '/home' }
-
-
 ];
+
+
+
+
+
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -4,7 +4,9 @@
   <span *ngFor="let screenMaster of screenMasters">
     
     <span >
-      <button mat-menu-item [routerLink]="screenMaster.screenName">
+      <!-- <button mat-menu-item [routerLink]="screenMaster.screenName"> -->
+          <button mat-menu-item (click)="onPress(screenMaster) " >
+
         <span>{{screenMaster.screenId}}</span>
       </button>
     </span> 

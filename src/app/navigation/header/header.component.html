@@ -1,36 +1,36 @@
 <mat-toolbar color="primary">
-        <div fxHide.gt.xs><button (click)="onToggleSideNav()">
-            <mat-icon>menu</mat-icon>
-          </button></div>
-        <div><a routerLink="/">LOGO</a></div>
-        <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
-  
-          <ul fxLayout fxLayoutGap="10px" class="navigation-items">
-           
-            
+  <div fxHide.gt.xs><button (click)="onToggleSideNav()">
+      <mat-icon>menu</mat-icon>
+    </button></div>
+  <div><a routerLink="/">LOGO</a></div>
+  <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
 
-                <li>
-                    <a routerLink="/home/admin-dashboard">ADMIN-DASHBOARD</a>
-        
-                  </li>
+    <ul fxLayout fxLayoutGap="10px" class="navigation-items">
+     
+      
 
-                  <li>
-                      <a routerLink="/home/dashboard">MAIN-DASHBOARD</a>
-          
-                    </li>
-
-
-                  
-  
-            <li>
-              <button (click)="userRoleService.userMasterLogOut()">Logout</button>
+          <li>
+              <a routerLink="/home/admin-dashboard">ADMIN-DASHBOARD</a>
   
             </li>
-          </ul>
-  
-  
-        </div>
-      </mat-toolbar>
-      <div>
-        <app-dynamic-menu></app-dynamic-menu>
-      </div>
+
+            <li>
+                <a routerLink="/home/dashboard">MAIN-DASHBOARD</a>
+    
+              </li>
+
+
+            
+
+      <li>
+        <button (click)="userRoleService.userMasterLogOut()">Logout</button>
+
+      </li>
+    </ul>
+
+
+  </div>
+</mat-toolbar>
+<div>
+  <app-dynamic-menu></app-dynamic-menu>
+</div>

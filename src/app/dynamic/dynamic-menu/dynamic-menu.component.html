@@ -31,7 +31,7 @@
         <button mat-button [matMenuTriggerFor]="menu.childMenu">
           {{moduleMaster.moduleName}}
         </button>
-          <app-menu-item #menu [screenMasters]="moduleMaster.screenMasterList"></app-menu-item>   
+          <app-menu-item #menu [screenMasters]="moduleMaster.screenMasterList" (tabHandler)='displayCounter($event) ' ></app-menu-item>   
 
       </span>
        <!-- <span *ngIf="!screenModule.screenMasterList || screenModule.screenMasterList.length === 0">
@@ -41,6 +41,31 @@
       </span>  -->
     </span>
   </mat-toolbar>
-  <!-- <router-outlet></router-outlet> -->
+
+  <main>
+
+
+      <!-- <div class="mat-tab-links">
+          
+          <a _ngcontent-c2="" class="tab-font mat-tab-link mat-tab-label-active ng-star-inserted" 
+          mat-tab-link="" ng-reflect-active="true" title=" PLANT WORKCENTER" aria-current="true" aria-disabled="false" 
+          tabindex="0"><span _ngcontent-c2=""> PLANT WORKCENTER</span><span _ngcontent-c2="" class="closeIco"><i _ngcontent-c2=""></i>
+          </span></a><mat-ink-bar class="mat-ink-bar" style="visibility: visible; left: 2px; width: 180px;"></mat-ink-bar></div>
+ -->
+
+      <nav mat-tab-nav-bar>
+          <a mat-tab-link
+             *ngFor="let tab of tabs ;let i = index;"
+             [routerLink]="tab.routerpath"
+             routerLinkActive #rla="routerLinkActive"
+             [active]="rla.isActive">
+            {{tab.name}}
+            <!-- <button mat-raised-button (click)='removeMe(i)'><mat-icon inline=true>close</mat-icon></button> -->
+            <span  (click)='removeMe(i)'><mat-icon>close</mat-icon></span>
+          </a>
+        </nav>
+    <router-outlet></router-outlet> 
+
+  </main>
 </div>
 <!-- <span class="version-info">Current build: {{version.full ? version.full : version}}</span> -->

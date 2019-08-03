@@ -1,4 +1,4 @@
-import { Component, OnInit,Input, ViewChild } from '@angular/core';
+import { Component, OnInit,Input, ViewChild, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { ScreenMaster } from 'src/app/model/screen-master';
 
@@ -11,10 +11,17 @@ export class MenuItemComponent implements OnInit {
  
   @Input() screenMasters: ScreenMaster[];
 
-  @ViewChild('childMenu',{static:true}) public childMenu;
+  @Output() tabHandler = new EventEmitter<ScreenMaster>();
+    @ViewChild('childMenu',{static:true}) public childMenu;
   constructor(public router: Router) { }
 
   ngOnInit() {
+  }
+
+
+  onPress(screenMaster:ScreenMaster){
+    //console.log('YOU CLICK ON MENU TAB:',screenMaster);
+    this.tabHandler.emit(screenMaster);
   }
 
 }
